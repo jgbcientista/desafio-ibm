@@ -1,0 +1,33 @@
+<header class="navbar navbar-expand-lg navbar-dark fixed-top nga-navbar">
+  <nav class="container" aria-label="Main navigation">
+   <div class="collapse navbar-collapse" id="navbarText">
+    
+    <div class="btn-group w-25  d-block" >
+      <a class="dropdown-toggle navbar-brand" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-user"></i>
+        <span class="nga-menu-cadastros mx-1" style="font-size: 13px;"> Módulo do cliente</span>
+      </a>
+
+      <ul class="dropdown-menu dropdown-menu-end">
+
+        <li>
+          <button [routerLink]="['/create-cliente']" class="dropdown-item" type="button">
+            <i class="fa-solid fa-user-plus"></i>
+            <b> Novo cliente</b>
+          </button>
+        </li>
+
+        <li>
+          <button [routerLink]="['/list-cliente']" class="dropdown-item" type="button">
+            <i class="fa-solid fa-users"></i>
+            <b> Lista de clientes</b>
+          </button>
+        </li>
+
+      </ul>
+    </div>     
+    </div>
+
+    
+  </nav>
+</header>

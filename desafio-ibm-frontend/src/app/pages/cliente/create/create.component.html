@@ -1,0 +1,170 @@
+<div class="container" style="position: relative; top: -50px;; width: 70%;">
+  <br />
+  <br />
+
+  <div class="table-responsive-md">
+    <div class="row">
+      <div class="nga-card">
+
+        <div class="card-body px-lg-5 pt-4">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+              <div class="col">
+                <div class="card mb-2">
+
+                  <div class="card-body">
+
+
+                    <div class="alert alert-success d-flex align-items-center" role="alert" *ngIf="msgSucesso">
+                      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                      <div>
+                        Operação de {{operacao}} realizada com suceso.
+                      </div>
+                    </div>
+
+                    <div class="alert alert-danger d-flex align-items-center" role="alert" *ngIf="msgErro">
+                      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                      <div>
+                        {{infoErro}}
+                      </div>
+                    </div>
+
+
+                  <!--INICIO FORMULARIO-->
+                      <div class="container">
+                        <div class="row">
+                          <legend><strong>{{TITULO_PAGINA_CREATE}}</strong></legend>
+                          <hr />
+
+                          <div class="col-sm">
+                            <div class="mb-3">
+                              <label>Nome</label>
+                                <input type="text" 
+                                formControlName="nome" 
+                                class="form-control" 
+                                placeholder="Informe o nome"
+                                required 
+                                class="form-control" 
+                                [ngClass]="{ 'is-invalid': submitted && f['nome'].errors}">
+                                <div *ngIf="submitted && f['nome'].errors?.['required']" class="invalid-feedback">
+                                  <div *ngIf="f['nome'].errors?.['required']">Por favor, informe o nome</div>
+                                </div> 
+                            
+                            </div>
+                          </div>
+
+                          <div class="col-sm">
+                            <div class="mb-3">
+                              <label>E-mail</label>
+                                <input type="text" 
+                                formControlName="email" class="form-control"  
+                                required 
+                                class="form-control" 
+                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors}"
+                                placeholder="Informe o e-mail">  
+                                <div *ngIf="submitted && f['email'].errors?.['required']" class="invalid-feedback">
+                                  <div *ngIf="f['email'].errors?.['required']">Por favor, informe o e-mail</div>
+                                </div>                             
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="row">
+
+                          
+                          <div class="col-sm">
+                            <div class="mb-3">
+                              <label>Idade</label>
+                                <input type="text" 
+                                formControlName="idade"
+                                placeholder="Iforme a idade"
+                                required 
+                                class="form-control" 
+                                [ngClass]="{ 'is-invalid': submitted && f['idade'].errors}" >                              
+                                <div *ngIf="submitted && f['idade'].errors?.['required']" class="invalid-feedback">
+                                  <div *ngIf="f['idade'].errors?.['required']">Por favor, informe a idade</div>
+                                </div> 
+                            </div>
+                          </div>
+
+                          <div class="col-sm">
+                            <div class="mb-3">
+                              <label>Número Conta</label>
+                                <input type="text" 
+                                  formControlName="numeroConta" 
+                                  required 
+                                  mask="99999999999"
+                                  class="form-control" 
+                                  [ngClass]="{ 'is-invalid': submitted && f['numeroConta'].errors}" 
+                                    placeholder="Informe o nº de sua conta">                              
+                                <div *ngIf="submitted && f['numeroConta'].errors?.['required']" class="invalid-feedback">
+                                  <div *ngIf="f['numeroConta'].errors?.['required']">Por favor, informe o nº da conta.</div>
+                                </div> 
+                            </div>
+                          </div>
+
+                          <div class="col-sm">
+                            <div class="mb-3">
+                              <label>Saldo</label>
+                                <input type="text" 
+                                  formControlName="saldo" 
+                                  class="form-control"  
+                                  mask="separator.3" 
+                                  prefix="R$ " 
+                                  decimalMarker=","
+                                  [maxlength]="20"
+                                  required
+                                   [ngClass]="{ 'is-invalid': submitted && f['saldo'].errors}"
+                                  placeholder="Informe o saldo">   
+                                  <div *ngIf="submitted && f['saldo'].errors?.['required']" class="invalid-feedback">
+                                    <div *ngIf="f['saldo'].errors?.['required']">Por favor, informe valor do saldo.</div>
+                                  </div>                           
+                            </div>
+                          </div>
+
+
+                        </div>
+                      </div>
+
+
+
+              </div>
+          </div>
+      </div>
+</div>
+<br />
+
+
+ <!--FIM FORMULARIO-->
+        <div class="card mb-2">
+                  <div class="card-body regra-btn-alinha">
+
+                        <button type="button" class="btn btn-outline-danger" routerLink="/list-cliente">
+                          <span aria-hidden="true">&times;</span>
+                            Cancelar
+                        </button>
+
+                        <button type="button" class="btn btn-outline-warning" (click)="limpar()">
+                          <i class="fa fa-eraser" aria-hidden="true"></i>
+                            Limpar
+                        </button>
+
+                        <button type="submit" class="btn btn-outline-success">
+                          <i class="fa-solid fa-square-plus"></i>
+                            Incluir
+                        </button>
+
+                  </div>
+        </div>
+         <!--FIM FORMULARIO-->
+        <br />
+      </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>
+ 

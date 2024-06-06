@@ -1,0 +1,59 @@
+<div class="container" style="position: relative;  width: 70%;">
+
+  <div class="card-body regra-btn-alinha" style="text-align: right;">
+  <button type="submit" class="btn btn-outline-success me-2" routerLink="/create-cliente/">
+    <i class="fa-solid fa-user"></i>
+    Novo 
+  </button>
+  </div>
+   <div class="table-responsive-md">
+    <div class="row">
+      <legend><strong>Lista de clientes</strong></legend>
+      <hr />
+      <div class="card mb-2" *ngIf="possuiRegistros">
+        <div class="card-body regra-btn-alinha">
+
+          <table class="table table-bordered table table-striped">
+            <thead>
+              <tr class="table-primary">
+                <th style="text-align: center">Código</th>
+                <th style="text-align: center">Nome</th>
+                <th style="text-align: center">E-mail</th>
+                <th style="text-align: center">Idade</th>
+                <th style="text-align: center">Número da Conta</th>
+                <th style="text-align: center">Saldo</th>
+                <th style="text-align: center;">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="
+            let item of clientes
+           
+            let i = index ">
+                <td style="text-align: center">{{ item.id }}</td>
+                <td style="text-align: center">{{ item.nome }}</td>
+                <td style="text-align: center">{{ item.email }}</td>
+                <td style="text-align: center">{{ item.idade }}</td>
+                <td style="text-align: center">{{ item.numeroConta }}</td>
+                <td style="text-align: center">{{ item.saldo | currency:'BRL':'symbol' }}</td>
+                <td style="text-align: center">
+              
+                  <a href="#" title="Realizar operação de crédito e débito do cliente" [routerLink]="['/cliente/', item.id, 'edit']"
+                    class="btn btn-outline-info">
+                    <i class="fa-solid fa-calculator"></i>
+                  </a>
+
+                
+                </td>
+              </tr>
+ 
+            </tbody>
+          </table>
+ 
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+
+ 

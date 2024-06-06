@@ -1,0 +1,150 @@
+<div class="container" style="position: relative; top: -50px;; width: 70%;">
+  <br />
+  <br />
+
+  <div class="table-responsive-md">
+    <div class="row">
+      <div class="nga-card">
+
+        <div class="card-body px-lg-5 pt-4">          
+            <div class="form-row">
+              <div class="col">
+                <div class="card mb-2">
+
+                  <div class="card-body">
+                    <div class="spinner-border m-5" role="status" *ngIf="loaded">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  
+                    <div class="container">
+                      <legend><strong>Edição dos dados de cliente</strong></legend>
+                      <div class="row">
+                       
+                        <hr />
+
+                        <div class="col-sm">
+                          <div class="mb-3">
+                            <label>Nome</label>
+                            <input type="text" value="{{this.cliente!.nome}}" disabled class="form-control"
+                               >
+                          </div>
+                        </div>
+
+
+                        <div class="col-sm">
+                          <div class="mb-3">
+                            <label>E-mail</label>
+                            <input type="text" value="{{this.cliente.email}}" disabled class="form-control"
+                               >
+                          </div>
+                        </div>
+
+                        <div class="col-sm">
+                          <div class="mb-3">
+                            <label>Idade</label>
+                            <input type="text" value="{{this.cliente.idade}}" disabled class="form-control"
+                              >
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="row">
+
+                        <div class="col-sm">
+                          <div class="mb-3">
+                            <label>Nº da Conta</label>
+                            <input type="text" value="{{this.cliente.numeroConta}}" disabled class="form-control"
+                               >
+                          </div>
+                        </div>
+
+                        <div class="col-sm">
+                          <div class="mb-3">
+                            <label>Saldo atual</label>
+                            <input type="text" value="{{this.cliente.saldo | currency:'BRL':'symbol' }}" disabled
+                              class="form-control">
+                          </div>
+                        </div>
+
+                        <div class="col-sm">
+                          <div class="mb-3">
+                            <label>Valor</label>
+
+                            <input type="text" 
+                            [(ngModel)]="extrato.valor" 
+                              class="form-control" 
+                              mask="separator.3"
+                              prefix="R$ " 
+                              decimalMarker="," 
+                              [maxlength]="20" 
+                              required
+                              placeholder="Informe o saldo">
+                          
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-2">
+              <div class="card-body regra-btn-alinha">
+
+                <button type="button" class="btn btn-outline-danger" routerLink="/list-cliente">
+                  <span aria-hidden="true">&times;</span>
+                  Cancelar
+                </button>
+
+
+                <button class="btn btn-outline-secondary" type="submit" (click)="debitar()">
+                  <i class="fa-solid fa-minus"></i>
+                  Debitar
+                </button>
+
+                <button class="btn btn-outline-success" type="button" (click)="creditar()">
+                  <i class="fa-solid fa-plus"></i>
+                  Creditar
+                </button>
+              </div>
+            </div>
+         
+              <div class="container" *ngIf="cliente.extrato !=undefined">
+                <legend><strong>Edição dos dados de cliente</strong></legend>
+                <hr />
+                <div class="row">
+
+              
+              <table class="table table-bordered table table-striped">
+                <thead>
+                  <tr class="table-primary">
+                    <th style="text-align: center">Código</th>
+                    <th style="text-align: center">Operação</th>
+                    <th style="text-align: center">Data operação</th>
+                    <th style="text-align: center">Valor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="
+              let item of cliente?.extrato
+             
+              let i = index ">
+                    <td style="text-align: center">{{ item.id }}</td>
+                    <td style="text-align: center">{{ item.operacao }}</td>
+                    <td style="text-align: center">{{ item.dataOperacaoFormatada }}</td>
+                    <td style="text-align: center">{{ item.valor | currency:'BRL':'symbol' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </div>
+
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>
